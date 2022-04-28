@@ -3,20 +3,25 @@
   <!-- <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
 
-  <SetupAndRefPractice />
+  <BasicPractice />
+  <hr>
+  <hr>
+  <VariablePassing />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 // import HelloWorld from './components/HelloWorld.vue';
-import SetupAndRefPractice from './components/SetupAndRefPractice.vue';
+import BasicPractice from './components/BasicPractice.vue';
+import VariablePassing from './components/VariablePassing/Parent.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     // original component
     // HelloWorld
-    SetupAndRefPractice
+    BasicPractice,
+    VariablePassing
   }
 });
 </script>

@@ -7,6 +7,9 @@
   <hr>
   <hr>
   <VariablePassing />
+  <hr>
+  <hr>
+  <Computed />
 </template>
 
 <script lang="ts">
@@ -14,6 +17,7 @@ import { defineComponent } from 'vue';
 // import HelloWorld from './components/HelloWorld.vue';
 import BasicPractice from './components/BasicPractice.vue';
 import VariablePassing from './components/VariablePassing/Parent.vue';
+import Computed from './components/Computed.vue';
 
 export default defineComponent({
   name: 'App',
@@ -21,7 +25,8 @@ export default defineComponent({
     // original component
     // HelloWorld
     BasicPractice,
-    VariablePassing
+    VariablePassing,
+    Computed
   }
 });
 </script>

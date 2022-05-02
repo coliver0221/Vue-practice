@@ -1,16 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <h2>Parent Component</h2>
+  <button @click="isShow = !isShow">切換顯示</button>
+  <hr />
+  <!-- make child component disappear to check effect of 'destory' -->
+  <Child v-if="isShow" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import { defineComponent, ref } from "vue";
+import Child from "./components/Child.vue";
 
 export default defineComponent({
   name: "App",
   components: {
-    HelloWorld,
+    Child,
+  },
+  setup() {
+    const isShow = ref(true);
+
+    return {
+      isShow,
+    };
   },
 });
 </script>

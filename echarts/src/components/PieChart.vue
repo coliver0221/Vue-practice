@@ -1,5 +1,5 @@
 <template>
-  <div id="myBarChart" ref="pieChartContainer"></div>
+  <div id="myPieChart" ref="pieChartContainer"></div>
 </template>
 
 <script>
@@ -66,7 +66,6 @@ export default {
 
     const drawChart = (pieChart) => {
       const series = generateSeries(props.dataset);
-      console.log(series);
       const option = {
         tooltip: {
           trigger: "item",
@@ -105,7 +104,7 @@ export default {
 </script>
 
 <style>
-#myBarChart {
+#myPieChart {
   height: 500px;
 }
 </style>

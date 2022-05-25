@@ -66,12 +66,19 @@ export default {
 
     const drawChart = (pieChart) => {
       const series = generateSeries(props.dataset);
+
+      /** @type EChartsOption */
       const option = {
         tooltip: {
           trigger: "item",
         },
         legend: {
           left: "center",
+          icon: "circle",
+          itemHeight: 20,
+          textStyle: {
+            fontSize: 20,
+          },
         },
         series: series,
       };

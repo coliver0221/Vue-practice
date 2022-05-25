@@ -5,13 +5,17 @@
 <script>
 import { onMounted, onUnmounted, ref } from "vue";
 import * as echarts from "echarts";
+import mailType from "./categories";
 
-const generateSeries = (dataset) => {
-  // TODO: deal with the dataset
+const generateDatasetSource = (dataset) => {
+  // create dataset source for echart
+  let source = [];
+  source.push(Object.keys(dataset[0]));
+  dataset.forEach((dailyData) => {
+    source.push(Object.values(dailyData));
+  });
 
-  const series = [];
-
-  return series;
+  return source;
 };
 
 export default {
@@ -19,34 +23,83 @@ export default {
     const barChartContainer = ref(null);
 
     const drawChart = (barChart) => {
-      // const series = generateSeries(props.dataset);
-      // console.log(series);
-      // const option = {
-      //   tooltip: {
-      //     trigger: "item",
-      //   },
-      //   legend: {
-      //     left: "center",
-      //   },
-      //   series: series,
-      // };
-      // option && barChart.setOption(option);
+      const source = generateDatasetSource(props.dataset);
+      console.log(source);
+
+      /** @type EChartsOption */
+      const option = {
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            type: "shadow",
+          },
+          textStyle: {
+            align: "left",
+          },
+        },
+        legend: {
+          icon: "circle",
+          itemHeight: 20, // modify size of icon
+          textStyle: {
+            fontSize: 20,
+          },
+          selector: [{ type: "all", title: "所有類別" }],
+          selectorPosition: "start",
+          selectorLabel: {
+            fontSize: 16,
+            lineHeight: 20,
+          },
+        },
+        dataZoom: [
+          {
+            // let user to zoom in the chart
+            type: "inside",
+          },
+          {
+            // display slider under the chart
+            type: "slider",
+          },
+        ],
+        dataset: {
+          source,
+        },
+        xAxis: {
+          type: "time",
+          axisLabel: {
+            formatter: "{yyyy}/{MM}/{dd}",
+          },
+        },
+        yAxis: {},
+        series: mailType.map((value) => {
+          return {
+            type: "bar",
+            name: value,
+            stack: "total",
+            encode: {
+              x: "date",
+              y: value,
+            },
+          };
+        }),
+      };
+      option && barChart.setOption(option);
     };
 
     onMounted(() => {
-      // let barChart = echarts.init(barChartContainer.value);
-      // drawChart(barChart);
-      // window.onresize = function () {
-      //   barChart.resize();
-      // };
+      let barChart = echarts.init(barChartContainer.value);
+      drawChart(barChart);
+      window.onresize = function () {
+        barChart.resize();
+      };
     });
 
     onUnmounted(() => {
-      // window.onresize = null;
+      window.onresize = null;
     });
 
     return {
-      /*barChartContainer, drawChart*/
+      barChartContainer,
+      drawChart,
     };
   },
   props: {

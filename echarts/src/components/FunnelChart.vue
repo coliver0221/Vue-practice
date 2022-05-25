@@ -8,6 +8,7 @@ import * as echarts from "echarts";
 
 export default {
   setup(props) {
+    console.log(props.dataset);
     const funnelChartContainer = ref(null);
 
     const drawChart = (funnelChart) => {
@@ -37,7 +38,7 @@ export default {
               ).toString() + "%",
             maxSize: "100%",
             sort: "descending",
-            gap: 2,
+            gap: 20,
             label: {
               show: true,
               position: "inside",
@@ -54,8 +55,9 @@ export default {
               },
             },
             itemStyle: {
-              borderColor: "#fff",
-              borderWidth: 1,
+              borderColor: "inhert",
+              borderWidth: 10,
+              borderCap: "round",
             },
             emphasis: {
               label: {
@@ -68,6 +70,7 @@ export default {
                 name: "Cellopoint\n安全防護掃描",
                 itemStyle: {
                   color: "#730FC3",
+                  borderColor: "#730FC3",
                 },
               },
               {
@@ -75,6 +78,7 @@ export default {
                 name: "Cellopoint\n回報郵件防護",
                 itemStyle: {
                   color: "#6558F5",
+                  borderColor: "#6558F5",
                 },
               },
             ],
@@ -113,6 +117,5 @@ export default {
 #myFunnelChart {
   height: 500px;
   width: 500px;
-  border: 1px solid #000;
 }
 </style>

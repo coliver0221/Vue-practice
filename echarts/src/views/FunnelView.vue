@@ -17,6 +17,12 @@ export default {
       filterByReport: 119,
       final: 163476,
     };
+    // const dataset = {
+    //   total: 100,
+    //   filterByScan: 35,
+    //   filterByReport: 10,
+    //   final: 55,
+    // };
 
     return { dataset };
   },
@@ -26,4 +32,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.funnel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

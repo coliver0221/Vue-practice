@@ -1,7 +1,8 @@
 <template>
   <nav>
     <router-link to="/">PieChart</router-link> |
-    <router-link to="/about">BarChart</router-link>
+    <router-link to="/about">BarChart</router-link> |
+    <router-link to="/funnel">FunnelChart</router-link>
   </nav>
   <router-view />
 </template>

@@ -24,7 +24,6 @@ export default {
 
     const drawChart = (barChart) => {
       const source = generateDatasetSource(props.dataset);
-      console.log(source);
 
       /** @type EChartsOption */
       const option = {
@@ -66,7 +65,8 @@ export default {
         xAxis: {
           type: "time",
           axisLabel: {
-            formatter: "{yyyy}/{MM}/{dd}",
+            formatter:
+              props.timeRange === "yearly" ? "{yyyy}/{MM}/{dd}" : "{HH}",
           },
         },
         yAxis: {},
@@ -105,6 +105,10 @@ export default {
   props: {
     dataset: {
       type: Array,
+      required: true,
+    },
+    timeRange: {
+      type: String,
       required: true,
     },
   },

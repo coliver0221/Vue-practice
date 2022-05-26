@@ -36,11 +36,11 @@ export default {
         count: 1746,
       },
       {
-        type: "灰色信件",
+        type: "灰色郵件",
         count: 582,
       },
       {
-        type: "可疑信件",
+        type: "可疑郵件",
         count: 103,
       },
     ];

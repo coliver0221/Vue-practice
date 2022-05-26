@@ -6,6 +6,7 @@
 import { onMounted, onUnmounted, ref } from "vue";
 import * as echarts from "echarts";
 import mailType from "./categories";
+import { mailColorMap } from "./categories";
 
 const generateDatasetSource = (dataset) => {
   // create dataset source for echart
@@ -78,6 +79,9 @@ export default {
             encode: {
               x: "date",
               y: value,
+            },
+            itemStyle: {
+              color: mailColorMap[value],
             },
           };
         }),

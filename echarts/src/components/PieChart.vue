@@ -5,12 +5,16 @@
 <script>
 import { onMounted, onUnmounted, ref } from "vue";
 import * as echarts from "echarts";
+import { mailColorMap } from "../components/categories";
 
 const generateSeries = (dataset) => {
   const data = dataset.map((d) => {
     return {
       name: d.type,
       value: d.count,
+      itemStyle: {
+        color: mailColorMap[d.type],
+      },
     };
   });
   const totle = dataset.map((d) => d.count).reduce((prev, next) => prev + next);
